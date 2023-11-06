@@ -1,24 +1,18 @@
-﻿namespace _8_Puzzle
+﻿using _8_Puzzle.ViewModels;
+
+namespace _8_Puzzle
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        /// <summary>
+        /// このViewのViewModel
+        /// </summary>
+        private MainViewModel ViewModel { get; set; } = new MainViewModel();
 
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            this.BindingContext = ViewModel;
         }
     }
 }
